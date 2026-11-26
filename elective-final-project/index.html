@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ed6a3a">
+  <title>Build Your Own Bite</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Build Your Own Bite">
+      <span class="brand-mark">BYOB</span>
+      <span>Build Your Own Bite</span>
+    </a>
+    <div class="store-status"><span></span> Open until 10:00 PM</div>
+  </header>
+
+  <main class="app-shell">
+    <section class="menu-panel">
+      <div class="hero">
+        <div>
+          <p class="eyebrow">Freshly made, your way</p>
+          <h1>What are you craving?</h1>
+        </div>
+        <div class="order-types" aria-label="Select order type">
+          <button class="order-type active" data-order-type="Delivery" type="button">Delivery</button>
+          <button class="order-type" data-order-type="Dine-in" type="button">Dine-in</button>
+          <button class="order-type" data-order-type="Take-out" type="button">Take-out</button>
+        </div>
+      </div>
+
+      <nav class="category-tabs" aria-label="Menu categories">
+        <button class="category-tab active" data-category="noodles" type="button">Noodles</button>
+        <button class="category-tab" data-category="drinks" type="button">Drinks</button>
+        <button class="category-tab" data-category="desserts" type="button">Desserts</button>
+      </nav>
+
+      <div id="menuGrid" class="menu-grid"></div>
+
+      <section id="customizer" class="customizer" aria-label="Customize your noodles">
+        <div class="customizer-heading">
+          <div>
+            <p class="eyebrow">Make it yours</p>
+            <h2 id="customizerName">Customize your noodles</h2>
+          </div>
+          <div class="price-badge" id="customizerPrice">₱0</div>
+        </div>
+
+        <div class="option-section">
+          <div class="option-heading"><h3>Spice level</h3><span id="spiceSelection">Mild</span></div>
+          <div class="spice-options" id="spiceOptions">
+            <button type="button" class="spice-option active" data-spice="Mild">Mild</button>
+            <button type="button" class="spice-option" data-spice="Medium">Medium</button>
+            <button type="button" class="spice-option" data-spice="Hot">Hot</button>
+            <button type="button" class="spice-option" data-spice="Extra Hot">Extra Hot</button>
+            <button type="button" class="spice-option" data-spice="Extreme">Extreme</button>
+          </div>
+        </div>
+
+        <div class="option-section">
+          <div class="option-heading"><h3>Add-ons</h3><span>Optional</span></div>
+          <div class="addon-grid" id="addonGrid"></div>
+        </div>
+
+        <button id="addToCart" class="add-button" type="button">Add to cart <span>₱0</span></button>
+      </section>
+    </section>
+
+    <aside class="cart-panel">
+      <div class="cart-heading">
+        <div>
+          <p class="eyebrow">Your order</p>
+          <h2>Cart</h2>
+        </div>
+        <span id="cartCount" class="cart-count">0</span>
+      </div>
+      <div id="cartItems" class="cart-items"></div>
+      <form id="takeoutForm" class="takeout-form" hidden>
+        <div class="takeout-heading">
+          <p class="eyebrow">Take-out details</p>
+        </div>
+        <label for="customerName">Name</label>
+        <input id="customerName" name="customerName" type="text" autocomplete="name" placeholder="Enter your name" required>
+
+        <label for="customerPhone">Phone number</label>
+        <input id="customerPhone" name="customerPhone" type="tel" autocomplete="tel" placeholder="Enter your phone number" required>
+
+        <label for="customerAddress">Address</label>
+        <textarea id="customerAddress" name="customerAddress" autocomplete="street-address" rows="2" placeholder="Enter your address" required></textarea>
+      </form>
+      <div class="cart-footer">
+        <div class="total-row"><span>Total</span><strong id="cartTotal">₱0</strong></div>
+        <button id="placeOrder" class="place-order" type="button" disabled>Place order</button>
+      </div>
+    </aside>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <div id="orderModal" class="modal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button id="closeModal" class="modal-close" type="button" aria-label="Close">×</button>
+      <div class="success-icon">✓</div>
+      <p class="eyebrow">Order confirmed</p>
+      <h2 id="modalTitle">Thank you!</h2>
+      <p>Your order has been received and will be prepared shortly.</p>
+      <button id="newOrder" class="add-button" type="button">Start a new order</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
